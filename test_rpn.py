@@ -11,6 +11,10 @@ class TestBasics(unittest.TestCase):
 		result = rpn.calculate('4 6 -')
 		self.assertEqual(-2, result)
 
+	def test_exp(self):
+		result = rpn.calculate('4 8 ^')
+		self.assertEqual(65536, result)
+
 	def test_toomany_add(self):
 		with self.assertRaises(ValueError):
 			result = rpn.calculate('1 2 3 +')
@@ -18,3 +22,7 @@ class TestBasics(unittest.TestCase):
 	def test_toomany_sub(self):
 		with self.assertRaises(ValueError):
 			result = rpn.calculate('1 2 3 -')
+
+	def test_toomany_exp(self):
+		with self.assertRaises(ValueError):
+			result = rpn.calculate('1 2 3 ^')
