@@ -15,6 +15,11 @@ def calculate(arg):
 				result = val1 + val2
 			elif token == '-':
 				result = val1 - val2
+			elif token == '^':
+				result = 1
+				for x in range(val2):
+					result = result * val1
+					
 
 			stack.append(result)
 
