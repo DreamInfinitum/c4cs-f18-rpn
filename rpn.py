@@ -9,22 +9,30 @@ def calculate(arg):
 		try:
 			stack.append(int(token))
 		except ValueError:
+			skip = 0
 			val2 = stack.pop()
-			val1 = stack.pop()
-			if token == '+':
-				result = val1 + val2
-			elif token == '-':
-				result = val1 - val2
-			elif token == '/':
-				result = val1 / val2
-			elif token == '%':
-				result = (val1 * val2) / 100
-			elif token == '^':
-				result = 1
-				for x in range(val2):
-					result = result * val1
+			if token == '~':
+				skip = 1
+				result = ~val2
+			if skip == 0:
+				val1 = stack.pop()
+				if token == '+':
+					result = val1 + val2
+				elif token == '-':
+					result = val1 - val2
+				elif token == '/':
+					result = val1 / val2
+				elif token == '%':
+					result = (val1 * val2) / 100
+				elif token == '&':
+					result = val1 & val2
+				elif token == '|':
+					result = val1 | val2
+				elif token == '^':
+					result = 1
+					for x in range(val2):
+						result = result * val1
 					
-
 			stack.append(result)
 
 	if len(stack) > 1:
