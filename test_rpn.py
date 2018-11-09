@@ -23,6 +23,18 @@ class TestBasics(unittest.TestCase):
 		result = rpn.calculate('72 3 /')
 		self.assertEqual(24, result)
 
+	def test_and(self):
+		result = rpn.calculate('63 63 &')
+		self.assertEqual(63, result)
+
+	def test_or(self):
+		result = rpn.calculate('63 64 |')
+		self.assertEqual(127, result)
+
+	def test_not(self):
+		result = rpn.calculate('6 ~')
+		self.assertEqual(-7, result)
+
 	def test_toomany_add(self):
 		with self.assertRaises(ValueError):
 			result = rpn.calculate('1 2 3 +')
