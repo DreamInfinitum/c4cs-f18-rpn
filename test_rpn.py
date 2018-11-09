@@ -35,6 +35,10 @@ class TestBasics(unittest.TestCase):
 		result = rpn.calculate('6 ~')
 		self.assertEqual(-7, result)
 
+	def test_exp(self):
+		result = rpn.calculate('6 !')
+		self.assertEqual(720, result)
+
 	def test_toomany_add(self):
 		with self.assertRaises(ValueError):
 			result = rpn.calculate('1 2 3 +')
