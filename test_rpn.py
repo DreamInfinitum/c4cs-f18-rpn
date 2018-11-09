@@ -15,6 +15,14 @@ class TestBasics(unittest.TestCase):
 		result = rpn.calculate('4 8 ^')
 		self.assertEqual(65536, result)
 
+	def test_per(self):
+		result = rpn.calculate('100 16 % +')
+		self.assertEqual(116, result)
+
+	def test_div(self):
+		result = rpn.calculate('72 3 /')
+		self.assertEqual(24, result)
+
 	def test_toomany_add(self):
 		with self.assertRaises(ValueError):
 			result = rpn.calculate('1 2 3 +')
