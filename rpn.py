@@ -14,6 +14,12 @@ def calculate(arg):
 			if token == '~':
 				skip = 1
 				result = ~val2
+			if token == '!':
+				skip = 1
+				result = 1
+				while val2 > 0:
+					result = result * val2
+					val2 = val2 - 1
 			if skip == 0:
 				val1 = stack.pop()
 				if token == '+':
